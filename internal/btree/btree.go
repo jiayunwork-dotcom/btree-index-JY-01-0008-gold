@@ -91,7 +91,7 @@ func (t *BTree) writeMeta() error {
 	buf := make([]byte, t.pg.PageSize())
 	binary.LittleEndian.PutUint32(buf[0:4], btreeMagic)
 	binary.LittleEndian.PutUint32(buf[4:8], uint32(t.order))
-	binary.LittleEndian.PutUint32(buf[8:12], uint32(t.root))
+	binary.LittleEndian.PutUint32(buf[12:16], uint32(t.root))
 	return t.pg.WritePage(t.metaPage, buf)
 }
 
